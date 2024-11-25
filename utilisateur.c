@@ -11,7 +11,7 @@ int ajouterUtilisateur(const Utilisateur* utilisateur) {
     }
 
     // Ajoute un nouvel utilisateur dans le fichier
-    fprintf(fichier, "%d;%s;%s;%s\n", utilisateur->id, utilisateur->nom, utilisateur->prenom, utilisateur->email);
+    fprintf(fichier, "%d;%s;%s;%s\n", utilisateur->id, utilisateur->nom, utilisateur->prenom, utilisateur->MotDePasse);
 
     fclose(fichier);
     return 0;
@@ -32,7 +32,7 @@ int modifierUtilisateur(int id, const Utilisateur* utilisateur) {
         sscanf(ligne, "%d;%*s;%*s;%*s", &fichierId);  // Récupère l'ID depuis la ligne
         if (fichierId == id) {
             fseek(fichier, -strlen(ligne), SEEK_CUR);  // Déplace le curseur au début de la ligne à modifier
-            fprintf(fichier, "%d;%s;%s;%s\n", utilisateur->id, utilisateur->nom, utilisateur->prenom, utilisateur->email);
+            fprintf(fichier, "%d;%s;%s;%s\n", utilisateur->id, utilisateur->nom, utilisateur->prenom, utilisateur->MotDePasse);
             found = 1;
             break;
         }
